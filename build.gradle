@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+}
+
+group = 'blu.trilateration'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.0'
+    implementation 'org.eclipse.californium:californium-core:3.13.0'
+    implementation 'com.fazecast:jSerialComm:2.11.0'
+    implementation 'com.lemmingapex.trilateration:trilateration:1.0.2'
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
