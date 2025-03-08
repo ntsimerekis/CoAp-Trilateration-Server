@@ -2,7 +2,7 @@ package blu.trilateration;
 
 import java.util.HashMap;
 
-public class DistanceData {
+public class DistanceData implements PositionData {
     private HashMap<String, Double> distances = new HashMap<String, Double>();
     private final String topReflector;
     private final String leftReflector;

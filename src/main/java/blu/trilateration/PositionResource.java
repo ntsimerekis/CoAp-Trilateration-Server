@@ -20,9 +20,9 @@ public class PositionResource extends CoapResource {
 
     private String message = "Hello, CoAP!";
 
-    private final DistanceData distanceData;
+    private final PositionData distanceData;
 
-    public PositionResource(String name, DistanceData distanceData) {
+    public PositionResource(String name, PositionData distanceData) {
         super(name);
         getAttributes().setTitle("Position Resource");
         this.distanceData = distanceData;
@@ -30,7 +30,7 @@ public class PositionResource extends CoapResource {
 
     @Override
     public void handleGET(CoapExchange exchange) {
-
+        System.out.println("Received GET request");
         exchange.accept();
 
         // Respond with the current message
@@ -41,26 +41,8 @@ public class PositionResource extends CoapResource {
         LeastSquaresOptimizer.Optimum optimum = solver.solve();
 
         double[] centroid = optimum.getPoint().toArray();
-        Map<String, Double> coordinatesMap = new HashMap<>();
-        coordinatesMap.put("x", BigDecimal.valueOf(centroid[0])
-                 .setScale(3, RoundingMode.HALF_UP)
-                .doubleValue());
 
-        coordinatesMap.put("y", BigDecimal.valueOf(centroid[1])
-                .setScale(3, RoundingMode.HALF_UP)
-                .doubleValue());
-
-        //Write to JSON
-        ObjectMapper objectMapper = new ObjectMapper();
-        String jsonString = null;
-        try {
-            // Convert the HashMap to a JSON string
-            jsonString = objectMapper.writeValueAsString(coordinatesMap);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        exchange.respond(jsonString);
+        exchange.respond(centroid[0] + ","  + centroid[1]);
     }
 
 }

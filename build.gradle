@@ -9,6 +9,12 @@ repositories {
     mavenCentral()
 }
 
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
 dependencies {
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.0'
     implementation 'org.eclipse.californium:californium-core:3.13.0'
@@ -16,6 +22,10 @@ dependencies {
     implementation 'com.lemmingapex.trilateration:trilateration:1.0.2'
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
+    // https://mvnrepository.com/artifact/org.slf4j/slf4j-nop
+    testImplementation 'org.slf4j:slf4j-nop:1.6.6'
+
+
 }
 
 test {
