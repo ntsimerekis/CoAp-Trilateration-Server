@@ -11,6 +11,9 @@ public class RandomDistanceData  implements PositionData {
 
     private final Random rand;
 
+    private static final int rangeMax = 10;
+    private static final int rangeMin = 0;
+
     public RandomDistanceData() {
         rand = new Random();
 
@@ -21,9 +24,9 @@ public class RandomDistanceData  implements PositionData {
 
     @Override
     public double[] getDistances() {
-        top += rand.nextGaussian();
-        left += rand.nextGaussian();
-        right += rand.nextGaussian();
+        top = rangeMin + (rangeMax - rangeMin) * rand.nextDouble();
+        left = rangeMin + (rangeMax - rangeMin) * rand.nextDouble();
+        right = rangeMin + (rangeMax - rangeMin) * rand.nextDouble();
 
         return new double[]{top, left, right};
     }
