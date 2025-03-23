@@ -18,6 +18,8 @@ import java.math.RoundingMode;
 
 public class PositionResource extends CoapResource {
 
+    private static int count = 0;
+
     private String message = "Hello, CoAP!";
 
     private final PositionData distanceData;
@@ -30,7 +32,7 @@ public class PositionResource extends CoapResource {
 
     @Override
     public void handleGET(CoapExchange exchange) {
-        System.out.println("Received GET request");
+        System.out.println("("+ count++ + ") " + "Received GET request");
         exchange.accept();
 
         // Respond with the current message
