@@ -1,0 +1,18 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Serial" type="Application" factoryName="Application">
+    <option name="ALTERNATIVE_JRE_PATH" value="temurin-21" />
+    <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+    <option name="MAIN_CLASS_NAME" value="blu.trilateration.Main" />
+    <module name="CoAp-Trilateration-Server.main" />
+    <option name="PROGRAM_PARAMETERS" value="--serial /dev/ttyACM1 --top C3:9B:B6:87:EB:5E --left DF:9B:5E:1D:D2:D2 --right D5:CC:A9:05:88:E4" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="blu.trilateration.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
