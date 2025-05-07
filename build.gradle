@@ -1,5 +1,20 @@
 plugins {
     id 'java'
+    id 'application'
+}
+
+application {
+    mainClass = 'blu.trilateration.Main'
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'blu.trilateration.Main'
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
 
 group = 'blu.trilateration'
@@ -16,6 +31,7 @@ java {
 }
 
 dependencies {
+    implementation 'org.slf4j:slf4j-nop:2.0.12'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.0'
     implementation 'org.eclipse.californium:californium-core:3.13.0'
     implementation 'com.fazecast:jSerialComm:2.11.0'
@@ -24,8 +40,6 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter'
     // https://mvnrepository.com/artifact/org.slf4j/slf4j-nop
     testImplementation 'org.slf4j:slf4j-nop:1.6.6'
-
-
 }
 
 test {
